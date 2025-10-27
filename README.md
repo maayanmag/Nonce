@@ -19,6 +19,7 @@ Nonce bridges utility and perceived meaninglessness, exposing the tension betwee
 4. (Extended concept) Token hash can be transformed into a physical engraving – slow, manual, permanent – resisting the ephemerality of digital identity.
 
 ## UI Walkthrough
+Try the live experience: [Launch Nonce](https://gleeful-stroopwafel-fadd92.netlify.app/)
 
 ### 1 — Sign-in prompt
 User receives a short-lived Google-issued ID Token  
