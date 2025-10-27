@@ -15,8 +15,24 @@ Nonce bridges utility and perceived meaninglessness, exposing the tension betwee
 ## Core Experience
 1. User signs in with Google (client‑side only).
 2. The issued ID Token is revealed, decoded, and hashed.
-3. A shortened fingerprint (truncated SHA‑256) emphasizes a disposable representation.
+3. A shortened fingerprint (truncated SHA‑256) emphasizes disposable representation.
 4. (Extended concept) Token hash can be transformed into a physical engraving – slow, manual, permanent – resisting the ephemerality of digital identity.
+
+## UI Walkthrough
+
+### 1 — Sign-in prompt
+User receives a short-lived Google-issued ID Token  
+![Nonce Screenshot 1 – Sign-In Prompt](noncescreenshot1.png)
+
+### 2 — Token view & actions
+View the raw token, decode its payload, generate a shortened fingerprint  
+![Nonce Screenshot 2 – Token View & Actions](noncescreenshot2.png)
+
+### 3 — Decoded payload & fingerprint
+Inspect identity details and copy the truncated SHA-256 hash  
+![Nonce Screenshot 3 – Decoded & Fingerprint](noncescreenshot3.png)
+
+
 
 ## Physical Artifact (Extended Scope)
 The live token (or its hash) is hand‑engraved, final characters partially erased to symbolize:
