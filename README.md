@@ -1,73 +1,101 @@
-# nonce
+# Nonce
 
-Disposable, short-lived identity viewer using Google ID Tokens.  
-Sign in once, inspect the raw JWT, decode its payload, and generate a stable shortened fingerprint (truncated SHA-256 hash).
+**An ephemeral identity viewer and a critical exploration of machine-generated identity tokens**
 
-## Features
-- Google Identity Services integration (no backend required)
-- Displays the issued ID Token (JWT) safely in the browser
-- One-click payload decode (header/payload only; no signature verification)
-- Shortened deterministic fingerprint via SHA-256 (first 12 hex chars)
-- Separation of concerns: HTML (structure), CSS (presentation), logic (pure), UI (DOM orchestration)
+By Maayan Magenheim
+
+## Concept & Intent
+Modern authentication collapses a human presence into a transient ID Token (JWT) – a bodiless, contextless string. This project invites direct encounter with that abstraction, reframing the token as both a functional credential and an existential artifact.
+
+## Why “Nonce”
+In cryptography: a number used once - uniqueness, non-replay.  
+In English echo: nonsense - machine language without human semantics.  
+Nonce bridges utility and perceived meaninglessness, exposing the tension between protocol and person.
+
+## Core Experience
+1. User signs in with Google (client‑side only).
+2. The issued ID Token is revealed, decoded, and hashed.
+3. A shortened fingerprint (truncated SHA‑256) emphasizes a disposable representation.
+4. (Extended concept) Token hash can be transformed into a physical engraving – slow, manual, permanent – resisting the ephemerality of digital identity.
+
+## Physical Artifact (Extended Scope)
+The live token (or its hash) is hand‑engraved, final characters partially erased to symbolize:
+- Impermanence of machine identity
+- Incompleteness of data as representation
+- Reclamation of authorship over generated identifiers
+
+### Process
+Engraving of token/hash characters into brass; deliberate partial omission toward the end to emphasize ephemerality.
+![Engraving Process – Hand Tools](engraving.jpeg)
+![Artifact In Progress – Emerging Characters](artifact.jpeg)
+
+### Finished Piece
+Final pendant and handoff moments.
+![Pendant Handed Over](pedant_handed.jpg)
+![Pendant Worn](pedant_with_me.jpg)
+
+## Critical Context
+- Surveillance Capitalism (Shoshana Zuboff): identity operationalized for prediction/control.
+- Data Subject vs Human Subject (Wendy Hui Kyong Chun): the token as a computational shadow.
+Nonce surfaces the moment of conversion from lived self to a functional data token.
+
+## Technical Features
+- Google Identity Services (no backend)
+- Raw JWT display (header/payload only; no signature validation)
+- Base64URL payload decode
+- SHA‑256 fingerprint + truncation
+- Separation of concerns (HTML / CSS / pure logic / UI orchestration)
 
 ## File Structure
 ```
 index.html     # Markup & script/style loading
 styles.css     # Visual design and layout
-logic.js       # Pure functions: JWT decode & hashing utilities (NonceLogic namespace)
+logic.js       # Pure functions (NonceLogic)
 ui.js          # DOM wiring, event handling, state transitions
 A_2D_digital_graphic_of_a_JWT_(JSON_Web_Token)_ico.png  # Favicon
 README.md      # Documentation
 ```
 
 ## Runtime Flow
-1. User clicks Google Sign-In button (rendered by Google script).
-2. Google returns a credential (ID Token) to global `handleCredentialResponse`.
-3. `ui.js` stores token, reveals UI sections, enables actions.
-4. User may:
-   - View full token (with Show more/less expansion).
-   - Decode payload (base64url → JSON parse).
-   - Generate shortened fingerprint (SHA-256 → truncate to 12 chars).
-5. Copy shortened value to clipboard.
+1. Google button click => ID Token (JWT) returned to `handleCredentialResponse`.
+2. Token cached; UI transitions from intro to inspection.
+3. User actions: view full token, decode payload, derive shortened fingerprint, copy output.
 
 ## Core Logic (logic.js)
-- `decodeJwt(token)` – Parses JWT payload only (no signature validation).
-- `sha256Hex(text)` – Returns full SHA-256 hex digest.
-- `shortenToken(token, length=12)` – Produces truncated fingerprint.
+- `decodeJwt(token)` – Parse payload (no signature verification).
+- `sha256Hex(text)` – Full SHA‑256 digest.
+- `shortenToken(token, length=12)` – Truncated fingerprint.
 
 ## UI Layer (ui.js)
-- Caches elements, binds events.
-- Exposes `handleCredentialResponse` globally (required by Google script).
-- Handles state transitions (hide description/sign-in; show token/actions).
-- Delegates cryptographic + decode operations to `NonceLogic`.
+Handles element binding, state transitions, token reveal, decode + hash invocation via `NonceLogic`.
 
 ## Security / Trust Notes
-- This demo does not validate JWT signatures (no public keys fetched).
-- Do not use this as an auth system—purely educational/visual.
-- Token content stays in the browser; no network transmission beyond Google.
-- Shortened hash is NOT reversible, but still derived from full token—treat output as sensitive.
+- No signature (JWS) verification performed.
+- Token is processed locally; never transmitted beyond Google issuance.
+- Fingerprint is derived data; treat as sensitive.
+- Educational visualization only; not an auth subsystem.
 
-## Local Usage
-Just open `index.html` in a modern browser:
-```
-open index.html   # macOS
-```
-Requires network access for Google Identity Services script.
-
-## Customization Ideas
-- Add signature verification (JWKS fetch + crypto verification).
-- Show token header separately.
-- Add expiration countdown.
-- Export decoded payload as JSON.
-- Dark/light mode toggle.
-
-## Accessibility Considerations
-- Buttons use visible text labels.
-- Tooltips appear on hover/focus (keyboard accessible via focus-within).
-- High-contrast glass effect kept readable with adequate text color.
+## Conceptual Questions
+- Is identity here property or merely permission?
+- What persists when authentication artifacts evaporate?
+- Can material translation (engraving) reassert continuity against protocol ephemerality?
 
 ## Browser Requirements
-- Modern browser with `crypto.subtle` and `TextEncoder` (Edge 79+, Chrome 37+, Firefox 34+, Safari 11+).
+Modern browser supporting `crypto.subtle` & `TextEncoder`.
+
+## Extended Documentation
+Detailed conceptual essay + appendices (application flow, process photos, finished piece):
+https://docs.google.com/document/d/1-oTy6PPiaTa8eRL6Upe_1iTQBZVMOcJU-Hhxnb9-EhI/edit?usp=sharing
+
+## Credits
+Concept, design, and development by Maayan Magenheim.
+Final photos by [Daniel Dahan](https://danieldahan.net). Engraving process documented July 27, 2025 (studio of Eldar Yinon). 
+Developed within the Bezalel M.Des Industrial Design — Design & Technology application assignment.
 
 ## Disclaimer
-Educational example only. Not production-grade identity or security tooling.
+Educational and reflective. Not suitable for production identity, security, or privacy use.
+
+## License & Attribution
+This project is available for artistic and educational use. If you build upon this work, please provide clear credit to the original author.
+Commercial use is not permitted without prior written permission.
+All rights not expressly granted are reserved by the author.
