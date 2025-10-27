@@ -101,8 +101,7 @@ Handles element binding, state transitions, token reveal, decode + hash invocati
 Modern browser supporting `crypto.subtle` & `TextEncoder`.
 
 ## Extended Documentation
-Detailed conceptual essay + appendices (application flow, process photos, finished piece):
-https://docs.google.com/document/d/1-oTy6PPiaTa8eRL6Upe_1iTQBZVMOcJU-Hhxnb9-EhI/edit?usp=sharing
+Detailed conceptual essay + appendices (application flow, process photos, finished piece) can be found [here](https://docs.google.com/document/d/1-oTy6PPiaTa8eRL6Upe_1iTQBZVMOcJU-Hhxnb9-EhI/edit?usp=sharing).
 
 ## Credits
 Concept, design, and development by Maayan Magenheim.
