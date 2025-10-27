@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>nonce</title>
+  <link rel="icon" href="A_2D_digital_graphic_of_a_JWT_(JSON_Web_Token)_ico.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="card">
+    <div class="project-title">nonce</div>
+    <div class="subtitle">your disposable identity</div>
+    <p id="description">
+      This is not a real login. When you click the button below, Google will issue you a short-lived <strong>ID Token</strong> – a signed digital token confirming who you are. This is your disposable, verifiable identity for the next few minutes. Once signed in, you’ll be able to <strong>see</strong> the token and <strong>decode</strong> or
+      <span class="tooltip">
+        <strong>shorten</strong>
+        <span class="tooltiptext">This is a truncated SHA-256 hash of your token – a short, stable fingerprint.</span>
+      </span>
+      it.
+    </p>
+
+    <!-- Google Sign-In -->
+    <div id="g_id_onload"
+         data-client_id="840192483254-r6ool94cgo98c2pq6nngp26716j654f5.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse"
+         data-auto_prompt="false">
+    </div>
+
+    <div class="g_id_signin"
+         data-type="standard"
+         data-size="large"
+         data-theme="filled_blue"
+         data-text="sign_in_with"
+         data-shape="pill"
+         data-logo_alignment="left"
+         id="signin-button">
+    </div>
+
+    <!-- Token output -->
+    <div id="output"></div>
+    <button class="show-more" id="showMoreBtn">Show more</button>
+
+    <!-- Actions -->
+    <div class="actions" id="actions">
+      <a href="#" id="decodeBtn">Decode my token</a>
+      <span class="tooltip">
+        <a href="#" id="shortenBtn">Shorten my token using SHA-256</a>
+        <span class="tooltiptext">This is a truncated SHA-256 hash of your token – a short, stable fingerprint.</span>
+      </span>
+    </div>
+
+    <!-- Shortened token -->
+    <div id="shortened-output"></div>
+  </div>
+
+  <!-- Logic (pure) then UI (DOM binding) -->
+  <script src="logic.js" defer></script>
+  <script src="ui.js" defer></script>
+</body>
+</html>

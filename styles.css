@@ -1,0 +1,200 @@
+/* =====================================================================
+   Global Layout & Background
+   ===================================================================== */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* =====================================================================
+   Card Container
+   ===================================================================== */
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 72px 56px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+  max-width: 620px;
+  width: 100%;
+  text-align: center;
+}
+
+/* =====================================================================
+   Typography
+   ===================================================================== */
+.project-title {
+  font-size: 38px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 17px;
+  margin-bottom: 32px;
+  color: #ccc;
+  font-style: italic;
+}
+
+p {
+  font-size: 17px;
+  color: #e2e2e2;
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+/* =====================================================================
+   Google Sign-In
+   ===================================================================== */
+.g_id_signin {
+  margin-bottom: 28px;
+}
+
+/* =====================================================================
+   Output Areas
+   ===================================================================== */
+#output,
+#shortened-output {
+  display: none;
+  margin-top: 24px;
+  font-size: 13px;
+  word-break: break-word;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 12px;
+  border-radius: 10px;
+  position: relative;
+  max-height: 5.8em;
+  overflow: hidden;
+}
+
+#output.expanded {
+  max-height: none;
+}
+
+.show-more {
+  background: none;
+  color: #aaa;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 8px;
+  display: none;
+}
+
+.show-more:hover {
+  color: #fff;
+}
+
+/* =====================================================================
+   Actions
+   ===================================================================== */
+.actions {
+  display: none;
+}
+
+.actions a {
+  display: inline-block;
+  margin: 12px 8px 0;
+  padding: 8px 16px;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 6px;
+  background: rgba(0, 150, 255, 0.9);
+  color: white;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.actions a:hover,
+.actions a:focus {
+  background: #00aaff;
+  outline: none;
+}
+
+/* =====================================================================
+   Inline Copy Button
+   ===================================================================== */
+.copy-inline {
+  font-size: 12px;
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.copy-inline:hover,
+.copy-inline:focus {
+  color: #fff;
+  outline: none;
+}
+
+/* =====================================================================
+   Tooltip
+   ===================================================================== */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.tooltip:hover .tooltiptext,
+.tooltip:focus-within .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* =====================================================================
+   Utility
+   ===================================================================== */
+.hidden {
+  display: none !important;
+}
+
+/* =====================================================================
+   Responsive
+   ===================================================================== */
+@media (max-width: 640px) {
+  .card {
+    padding: 48px 32px;
+  }
+  .project-title {
+    font-size: 30px;
+  }
+  p {
+    font-size: 15px;
+  }
+}
